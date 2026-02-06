@@ -17,7 +17,7 @@
 ## 4. 개발방향
 1. Shardcn UI Framwork를 사용한다. 
 2. CI/CD를 테스트해본다.  
-3 Docker 사용법을 테스트해본다.   
+3. Docker 사용법을 테스트해본다.   
 4. Github Actions을 테스트 해본다.
 5. IntellJ에서 내려받아 테스트 해본다.  
 6. 차후 DB는 PostgreSQL를 쓸 수 있도록 고려한다.
