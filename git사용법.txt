@@ -1,0 +1,17 @@
+# 1. 기본 브랜치 main으로 설정 (git init 전)
+git config --global init.defaultBranch main
+
+# 2. 새 프로젝트
+mkdir shardcn && cd shardcn
+code .
+
+# 3. 이제 git init → 자동 main 브랜치!
+git init  # main 브랜치 생성됨
+git config user.name "byeonggubaek"
+git config user.email "oranjes@naver.com"
+
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/byeonggubaek/shardcn.git
+git push -u origin main
+
