@@ -9,20 +9,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-
-export interface NavSubItem {
-  id: string,
-  title: string;
-  href: string,  
-  description: string;
-}
-export interface NavItem {
-  id: string,
-  title: string;
-  img: string;
-  description: string;
-  sub_menus: NavSubItem[];
-}
+import type { NavItem } from 'shared';
 
 interface WdogNaviProps {
   navItems: NavItem[];

@@ -38,15 +38,18 @@ export default defineConfig({
   },
 })
 
-#6. shadcn 설치 
+#6. Tailwind CSS IntelliSense 설치 
+언어 모드 변경: CSS 파일 열기 → 오른쪽 하단 언어 표시(Tailwind CSS) 클릭 → "Tailwind CSS" 선택.
+
+#7. shadcn 설치 
 npx shadcn@latest init
 
-#7. 기본 components 설치 
+#8. 기본 components 설치 
 npx shadcn@latest add button
 npx shadcn@latest add card
 npx shadcn@latest add table 
 
-#8. App.tsx 
+#9. App.tsx 
 import { useEffect, useState } from 'react'
 import { greet, type ApiResponse } from 'shared'
 import { Button } from "@/components/ui/button"
