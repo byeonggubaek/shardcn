@@ -1,5 +1,3 @@
-"use client"
-
 interface WdogImageProps {
   src: string;
   title: string;
