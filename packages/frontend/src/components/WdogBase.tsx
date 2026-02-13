@@ -5,7 +5,7 @@ interface CounterProps {
   initialCount?: number;
 }
 
-const Counter = ({ initialCount = 0 }: CounterProps) => {
+const WgodBase = ({ initialCount = 0 }: CounterProps) => {
   const [count, setCount] = useState<number>(initialCount);
 
   const increment = () => {
@@ -24,4 +24,4 @@ const Counter = ({ initialCount = 0 }: CounterProps) => {
   );
 };
 
-export default Counter;
+export default WgodBase;
