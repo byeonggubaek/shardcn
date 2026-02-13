@@ -1,11 +1,15 @@
 // oracle-pool.ts (에러 수정 완료)
 import oracledb from 'oracledb';
 import { NavItem } from 'shared';
+import dotenv from 'dotenv';
+
+// 환경 변수 로드
+dotenv.config();
 
 const DB_CONFIG = {
-  user: 'SCOTT',
-  password: 'TIGER',
-  connectString: 'localhost:1521/XEPDB1',
+  user: process.env.DB_USER,
+  password: process.env.DB_USER_PASSWORD,
+  connectString: `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_SERVICE_NAME}`,
   poolMin: 1,
   poolMax: 10,
   poolIncrement: 1
@@ -30,11 +34,8 @@ export async function initPool(): Promise<void> {
  */
 async function select(sql: string, binds: any[] = []): Promise<any[]> {
   await initPool();
-  console.log("풀생성");
   const connection = await pool!.getConnection();
-  console.log("DB 연결");
   try {
-    console.log(sql);
     const result = await connection.execute(sql, binds, {
       outFormat: oracledb.OUT_FORMAT_OBJECT,
     });
@@ -62,10 +63,7 @@ async function execute(sql: string, binds: any[] = []): Promise<any> {
   }
 }
 
-/**
- * 메뉴 조회 예제
- */
-// 1. 기존 함수들
+// 메뉴 조회 예제
 export async function getRawMenus(): Promise<any[]> {
   return select(`SELECT ID, TITLE, IMG, DESCRIPTION FROM NAV_ITEM`);
 }
@@ -82,8 +80,6 @@ export async function getMenus(): Promise<NavItem[]> {
   const menus = await getRawMenus();
   const subMenus = await getRawSubMenus();
   
-  console.log(menus);
-  console.log(subMenus);
   // 메뉴 맵 생성
   const menuMap = new Map<string, NavItem>();
   

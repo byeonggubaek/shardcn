@@ -4,7 +4,9 @@ import { greet, ApiResponse } from 'shared';
 import { initPool, getMenus } from './db';
 import dotenv from 'dotenv';
 
+// 환경 변수 로드
 dotenv.config();
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -35,7 +37,6 @@ app.get('/api/menus', async (req, res) => {
     });
   }
 });
-
 
 interface ApiResponse2<T> {
   success: boolean;
