@@ -1,8 +1,9 @@
+import WdogBase from "@/components/WdogBase";
 export default function MarketDetail() {
 
   return (
     <div className="min-h-screen bg-background text-foreground p-8">
-
+      <WdogBase />
       {/* 테스트 영역 */}
       <div className="max-w-md mx-auto p-8 bg-card rounded-2xl shadow-lg border">
         <h1 className="text-2xl font-bold mb-4">
