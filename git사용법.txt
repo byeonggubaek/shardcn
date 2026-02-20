@@ -20,3 +20,8 @@ git branch branch1
 git add . 
 git commit -m 'Branch Commit'
 git push -u origin branch1
+
+#5. git merge 
+git switch main 
+git pull 
+git merge branch1

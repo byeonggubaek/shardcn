@@ -38,7 +38,7 @@ export default function WdogNavi({ navItems }: WdogNaviProps) {
                         onClick={e => e.preventDefault()}
                       >
                         <img src={item.img} alt={item.title} width={300} height={400}  />
-                        <p className="text-[#056CF2] text-sm leading-tight">
+                        <p className="text-primary text-sm leading-tight">
                           {item.description}
                         </p>
                       </a>
@@ -70,8 +70,8 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
             ref={ref}
             {...props}
           >
-            <div className="text-sm font-medium leading-none text-[#0528F2]">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+            <div className="text-lg leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug">{children}</p>
           </a>
         </NavigationMenuLink>
       </li>
