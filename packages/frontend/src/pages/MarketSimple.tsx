@@ -47,7 +47,7 @@ export default function MarketSimple() {
             chartData={chartData} 
             chartConfig={dynamicConfig}
             xAxisKey="month"
-            title="지역별 월 매출 추이"
+            title="지역별 월별 매출 추이"
             description="2024년 1~3월 : 단위 백만원"
           />
         </div>        
