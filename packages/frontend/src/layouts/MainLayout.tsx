@@ -4,11 +4,10 @@ import type { NavItem } from 'shared';
 import { Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDarkMode } from '@/hooks/useDarkMode';
-import { Button } from '@/components/ui/button';
 
 export default function MainLayout() {
   const [navItems, setNavItems] = useState<NavItem[]>([]);
-  const { isDark, toggleDarkMode } = useDarkMode();
+  const isDarkMode = useDarkMode(); // 훅 호출
 
   useEffect(() => {
     fetch('http://localhost:3001/api/menus')
@@ -25,17 +24,11 @@ export default function MainLayout() {
       <header className="w-full px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-20 mx-auto border-b shrink-0">  {/* ✅ flex-shrink-0 */}
         <nav className="flex justify-between items-center">
           <Link to="/">
-            <img src="/logo.svg" alt="Logo" className="h-10 w-auto hover:cursor-pointer" />
+            <img src={isDarkMode ? "/logo_dark.svg" : "/logo.svg"} alt="Logo" className="h-10 w-auto hover:cursor-pointer" />
           </Link>
           <WdogNavi navItems={navItems} /> 
           <div className="w-25 space-x-4 hidden md:block pl-4">
-            <Button 
-              variant="outline" 
-              onClick={toggleDarkMode}
-              className="gap-2"
-            >
-              {isDark ? '☀️ 라이트' : '🌙 다크'}
-            </Button>
+            {isDarkMode ? "다크": "라이트"}
           </div>
         </nav>
       </header>

@@ -6,6 +6,7 @@ interface CounterProps {
 }
 
 const WgodBase = ({ initialCount = 0 }: CounterProps) => {
+  // 카운트 상태를 관리합니다.
   const [count, setCount] = useState<number>(initialCount);
 
   const increment = () => {
@@ -18,8 +19,10 @@ const WgodBase = ({ initialCount = 0 }: CounterProps) => {
   return (
     <div>
       <p>Count: {count}</p>
-      <Button className='bg-blue-500' onClick={increment}>Increase</Button>
-      <Button className='bg-blue-500' onClick={decrement}>Decrease</Button>
+      <div className='flex items-center justify-center gap-4'>
+        <Button onClick={increment}>Increase</Button>
+        <Button onClick={decrement}>Decrease</Button>
+      </div>
     </div>
   );
 };

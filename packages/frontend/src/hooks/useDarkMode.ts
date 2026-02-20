@@ -1,30 +1,28 @@
-// src/hooks/useDarkMode.ts
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export function useDarkMode() {
-  const [isDark, setIsDark] = useState(false);
+export const useDarkMode = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  console.log('설정'); 
 
-  // localStorage에서 불러오기
   useEffect(() => {
-    const saved = localStorage.getItem('dark-mode');
-    if (saved === 'true') {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    }
+    if (!window.matchMedia) return; // 구형 브라우저 지원
+
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(mq.matches);
+
+    const listener = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+    mq.addEventListener('change', listener);
+    return () => mq.removeEventListener('change', listener);
   }, []);
 
-  // 상태 변경 시 DOM + localStorage 업데이트
+    // 상태 변경 시 DOM + localStorage 업데이트
   useEffect(() => {
-    if (isDark) {
+    if (isDarkMode) {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('dark-mode', 'true');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('dark-mode', 'false');
     }
-  }, [isDark]);
+  }, [isDarkMode]);
 
-  const toggleDarkMode = () => setIsDark(prev => !prev);
-
-  return { isDark, toggleDarkMode };
-}
+  return isDarkMode;
+};
