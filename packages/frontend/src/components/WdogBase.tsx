@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button"
 
-interface CounterProps {
+interface WgodBaseProps {
   initialCount?: number;
 }
 
-const WgodBase = ({ initialCount = 0 }: CounterProps) => {
+const WgodBase = ({ initialCount = 0 }: WgodBaseProps) => {
   // 카운트 상태를 관리합니다.
   const [count, setCount] = useState<number>(initialCount);
 

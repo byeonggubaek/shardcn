@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { greet, ApiResponse } from 'shared';
-import { initPool, getMenus } from './db';
+import { initPool, getMenus, getInvoices, getColDescs } from './db';
 import dotenv from 'dotenv';
 
 // 환경 변수 로드
@@ -18,7 +18,7 @@ app.get('/', (_req, res) => {
   };
   res.json(response);
 });
-app.get('/api/menus', async (req, res) => {
+app.get('/api/get_menus', async (req, res) => {
   try {
     const pool = await initPool();
     const menus = await getMenus();
@@ -27,6 +27,51 @@ app.get('/api/menus', async (req, res) => {
       success: true,
       data: menus,
       count: menus.length,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('API 에러:', error);
+    res.status(500).json({
+      success: false,
+      error: (error as Error).message
+    });
+  }
+});
+app.get('/api/get_invoices', async (req, res) => {
+  try {
+    const pool = await initPool();
+    const invoices = await getInvoices();
+    res.json({
+      success: true,
+      data: invoices,
+      count: invoices.length,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('API 에러:', error);
+    res.status(500).json({
+      success: false,
+      error: (error as Error).message
+    });
+  }
+});
+app.get('/api/get_col_descs', async (req, res) => {
+  try {
+    const { table } = req.query as { table: string };  // 👈 req.query 사용!
+
+    if (!table) {
+      return res.status(400).json({
+        success: false,
+        error: 'table 이름이 필요합니다.'
+      });
+    }
+
+    const pool = await initPool();
+    const colDescs = await getColDescs(table);
+    res.json({
+      success: true,
+      data: colDescs,
+      count: colDescs.length,
       timestamp: new Date().toISOString()
     });
   } catch (error) {

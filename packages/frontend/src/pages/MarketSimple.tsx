@@ -21,8 +21,8 @@ export default function MarketSimple() {
 
   return (
     
-    <div>
-      <h1>상권분석 - 간단</h1>
+    <div className="flex flex-col justify-start">
+      <h1 className="text-xl mb-3">상권분석 - 간단히</h1>
       <div className="flex gap-4">
         <div>
           <WdogChartBar 

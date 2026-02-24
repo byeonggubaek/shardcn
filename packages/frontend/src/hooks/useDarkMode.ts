@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 export const useDarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  console.log('설정'); 
 
   useEffect(() => {
     if (!window.matchMedia) return; // 구형 브라우저 지원

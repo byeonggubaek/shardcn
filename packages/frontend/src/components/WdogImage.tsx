@@ -19,9 +19,9 @@ export default function WdogImage({ wdogImage }: WdogImageComponentProps) {
         className="w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:-rotate-2"
         alt={wdogImage.title} 
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
+      <div className="absolute inset-0 bg-linear-to-r from-blue-600/20 opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
       <div className={`absolute inset-0 
-        flex flex-col justify-end bg-gradient-to-t 
+        flex flex-col justify-end bg-linear-to-t 
         from-black/95 
         text-white
         p-${isSmallTitle ? 2 : 8}

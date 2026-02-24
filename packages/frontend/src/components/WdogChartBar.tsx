@@ -31,36 +31,34 @@ const WdogChartBar = ({
       </CardHeader>
       <CardContent className="px-2 pt-0">   
         <ChartContainer config={chartConfig} className={className}>
-          <ResponsiveContainer width="100%" height="100%">     
-            <BarChart accessibilityLayer data={chartData}>
-              <CartesianGrid vertical={false} />
-              <XAxis
-                dataKey={xAxisKey}
-                tickLine={true}
-                axisLine={true}
-                tickMargin={10}
-                tick={{ fontSize: 12 }}
+          <BarChart accessibilityLayer data={chartData}>
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey={xAxisKey}
+              tickLine={true}
+              axisLine={true}
+              tickMargin={10}
+              tick={{ fontSize: 12 }}
+            />
+            <YAxis 
+              tickLine={true}
+              axisLine={true}
+              tickMargin={10}
+              tick={{ fontSize: 12 }}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            
+            {/* 가변 Bar: chartConfig 키만큼 자동 생성 */}
+            {legendKeys.map((key) => (
+              <Bar 
+                key={key} 
+                dataKey={key} 
+                radius={4}
+                fill={chartConfig[key].color}
               />
-              <YAxis 
-                tickLine={true}
-                axisLine={true}
-                tickMargin={10}
-                tick={{ fontSize: 12 }}
-              />
-              <ChartTooltip content={<ChartTooltipContent />} />
-              <ChartLegend content={<ChartLegendContent />} />
-              
-              {/* 가변 Bar: chartConfig 키만큼 자동 생성 */}
-              {legendKeys.map((key) => (
-                <Bar 
-                  key={key} 
-                  dataKey={key} 
-                  radius={4}
-                  fill={chartConfig[key].color}
-                />
-              ))}
-            </BarChart>
-          </ResponsiveContainer>          
+            ))}
+          </BarChart>
         </ChartContainer>
       </CardContent>
     </Card>      

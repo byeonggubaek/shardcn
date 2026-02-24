@@ -9,6 +9,7 @@ import DashSale from '@/pages/DashSale.tsx';
 import GuideIntro from '@/pages/GuideIntro.tsx';
 import GuideBoard from '@/pages/GuideBoard.tsx';
 import Home from '@/pages/Home.tsx';
+import DashPopulation from "./pages/DashPopulation";
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
         <Route index element={<DashSale />} />           {/* / */}
         <Route path="*" element={<div>404 Not Found</div>} />
       </Route>      
+      <Route path="/dashboard/population" element={<MainLayout />}>
+        <Route index element={<DashPopulation />} />           {/* / */}
+        <Route path="*" element={<div>404 Not Found</div>} />
+      </Route>            
       <Route path="/guide/intro" element={<MainLayout />}>
         <Route index element={<GuideIntro />} />           {/* / */}
         <Route path="*" element={<div>404 Not Found</div>} />

@@ -10,10 +10,9 @@ export default function MainLayout() {
   const isDarkMode = useDarkMode(); // 훅 호출
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/menus')
+    fetch('http://localhost:3001/api/get_menus')
       .then(res => res.json())
       .then(data => {
-        console.table('📥 받은 메뉴:', data.data);
         setNavItems(data.data);  // 👈 바로 사용!
       });
   }, []);

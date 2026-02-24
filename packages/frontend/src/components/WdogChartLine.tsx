@@ -31,39 +31,37 @@ const WdogChartLine = ({
       </CardHeader>
       <CardContent className="px-2 pt-0">   
         <ChartContainer config={chartConfig} className={className}>
-          <ResponsiveContainer width="100%" height="100%">      
-            <LineChart accessibilityLayer data={chartData}>
-              <CartesianGrid vertical={false} strokeDasharray="3 3" />
-              <XAxis
-                dataKey={xAxisKey}
-                tickLine={true}
-                axisLine={true}
-                tickMargin={10}
-                tick={{ fontSize: 12 }}
+          <LineChart accessibilityLayer data={chartData}>
+            <CartesianGrid vertical={false} strokeDasharray="3 3" />
+            <XAxis
+              dataKey={xAxisKey}
+              tickLine={true}
+              axisLine={true}
+              tickMargin={10}
+              tick={{ fontSize: 12 }}
+            />
+            <YAxis 
+              tickLine={true}
+              axisLine={true}
+              tickMargin={10}
+              tick={{ fontSize: 12 }}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            
+            {/* 가변 Line: chartConfig 키만큼 자동 생성 */}
+            {legendKeys.map((key) => (
+              <Line 
+                key={key} 
+                dataKey={key} 
+                type="monotone"  
+                strokeWidth={3}
+                stroke={chartConfig[key].color}
+                dot={{ fill: chartConfig[key].color, strokeWidth: 2 }}
+                activeDot={{ r: 6, strokeWidth: 2 }}
               />
-              <YAxis 
-                tickLine={true}
-                axisLine={true}
-                tickMargin={10}
-                tick={{ fontSize: 12 }}
-              />
-              <ChartTooltip content={<ChartTooltipContent />} />
-              <ChartLegend content={<ChartLegendContent />} />
-              
-              {/* 가변 Line: chartConfig 키만큼 자동 생성 */}
-              {legendKeys.map((key) => (
-                <Line 
-                  key={key} 
-                  dataKey={key} 
-                  type="monotone"  
-                  strokeWidth={3}
-                  stroke={chartConfig[key].color}
-                  dot={{ fill: chartConfig[key].color, strokeWidth: 2 }}
-                  activeDot={{ r: 6, strokeWidth: 2 }}
-                />
-              ))}
-            </LineChart>
-          </ResponsiveContainer>           
+            ))}
+          </LineChart>
         </ChartContainer>
       </CardContent>
     </Card>   

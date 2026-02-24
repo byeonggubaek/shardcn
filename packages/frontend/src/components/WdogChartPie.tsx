@@ -36,7 +36,6 @@ const WdogChartPie = ({
     name: key,  // "desktop"
     value: chartData.reduce((sum, row) => sum + (row[key as keyof typeof row] || 0), 0),
   }))
-  console.log("Pie Chart Data:", pieData)
   const total = pieData.reduce((sum, d) => sum + d.value, 0)
 
   return (
@@ -47,62 +46,59 @@ const WdogChartPie = ({
       </CardHeader>
       <CardContent className="px-2 pt-0">
         <ChartContainer config={chartConfig} className={className}>
-          <ResponsiveContainer width="100%" height="100%">     
-            <PieChart>
-              <Pie data={pieData} 
-                cx="50%" 
-                cy="50%" 
-                outerRadius={120} 
-                innerRadius={70}  // 도넛 스타일          
-                dataKey="value" 
-                nameKey="name"
-                label
-              >
-                {pieData.map((entry, index) => (
-                  <Cell 
-                    key={`cell-${index}`} 
-                    fill={(chartConfig as any)[entry.name]?.color || '#888'} 
-                  />
-                ))}
-              </Pie>
-      {/* 중앙 텍스트 (투명 Pie) */}
-              <Pie 
-                data={[{ value: 100 }]}  // 더미 데이터
-                cx="50%" 
-                cy="50%" 
-                outerRadius={65}  // innerRadius 안쪽
-                dataKey="value"
-                cornerRadius={0}
-                stroke="none"
-              >
-                <Cell fill="transparent" />
-              </Pie>
-              
-              {/* 중앙 텍스트 오버레이 */}
-              <text 
-                x="50%" 
-                y="50%" 
-                textAnchor="middle" 
-                dominantBaseline="middle"
-                className="fill-foreground font-bold text-lg sm:text-xl lg:text-2xl"
-                style={{ fontSize: 'clamp(18px, 4vw, 32px)' }}
-              >
-                {total.toLocaleString()}
-              </text>
-              <text 
-                x="50%" 
-                y="58%" 
-                textAnchor="middle" 
-                className="fill-muted-foreground text-xs sm:text-sm"
-              >
-              {circle_detail}
-              </text>        
-              <ChartTooltip content={<ChartTooltipContent />} />
-              <ChartLegend content={<ChartLegendContent />} />        
-            </PieChart>
-          </ResponsiveContainer>  
+          <PieChart>
+            <Pie data={pieData} 
+              cx="50%" 
+              cy="50%" 
+              outerRadius={120} 
+              innerRadius={70}  // 도넛 스타일          
+              dataKey="value" 
+              nameKey="name"
+              label
+            >
+              {pieData.map((entry, index) => (
+                <Cell 
+                  key={`cell-${index}`} 
+                  fill={(chartConfig as any)[entry.name]?.color || '#888'} 
+                />
+              ))}
+            </Pie>
+    {/* 중앙 텍스트 (투명 Pie) */}
+            <Pie 
+              data={[{ value: 100 }]}  // 더미 데이터
+              cx="50%" 
+              cy="50%" 
+              outerRadius={65}  // innerRadius 안쪽
+              dataKey="value"
+              cornerRadius={0}
+              stroke="none"
+            >
+              <Cell fill="transparent" />
+            </Pie>
+            
+            {/* 중앙 텍스트 오버레이 */}
+            <text 
+              x="50%" 
+              y="50%" 
+              textAnchor="middle" 
+              dominantBaseline="middle"
+              className="fill-foreground font-bold text-lg sm:text-xl lg:text-2xl"
+              style={{ fontSize: 'clamp(18px, 4vw, 32px)' }}
+            >
+              {total.toLocaleString()}
+            </text>
+            <text 
+              x="50%" 
+              y="58%" 
+              textAnchor="middle" 
+              className="fill-muted-foreground text-xs sm:text-sm"
+            >
+            {circle_detail}
+            </text>        
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartLegend content={<ChartLegendContent />} />        
+          </PieChart>
         </ChartContainer>
-  
       </CardContent>
     </Card>  
   )

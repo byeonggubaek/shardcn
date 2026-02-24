@@ -1,6 +1,6 @@
 // oracle-pool.ts (에러 수정 완료)
 import oracledb from 'oracledb';
-import { NavItem } from 'shared';
+import { NavItem, Invoice, ColDesc } from 'shared';
 import dotenv from 'dotenv';
 
 // 환경 변수 로드
@@ -63,19 +63,62 @@ async function execute(sql: string, binds: any[] = []): Promise<any> {
   }
 }
 
-// 메뉴 조회 예제
-export async function getRawMenus(): Promise<any[]> {
-  return select(`SELECT ID, TITLE, IMG, DESCRIPTION FROM NAV_ITEM`);
+// 조회
+// 메뉴 조회 - 1. 메뉴와 서브메뉴를 각각 조회한 후, 자바스크립트에서 조합하여 반환
+async function getRawMenus(): Promise<any[]> {
+  return select(`
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+`);
 }
 
-export async function getRawSubMenus(): Promise<any[]> {
+async function getRawSubMenus(): Promise<any[]> {
   return select(`
-    SELECT TO_CHAR(NAV_ITEM_ID) || '-' || TO_CHAR(ID) AS ID, 
-           TITLE, HREF, DESCRIPTION 
-    FROM NAV_SUB_ITEM
-  `);
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+`);
 }
-// 2. 👇 핵심! NavItem[]로 변환
+// 칼럼정의 조회 - 1. 테이블명으로 칼럼정의 조회 (칼럼명은 소문자로 반환)
+async function getRawColDescs(tableName: string): Promise<any[]> {
+  return select(`
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = :tableName
+ORDER BY seq
+`, [tableName]);
+}
+
+async function getRawInvoices(): Promise<any[]> {
+  return select(`
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+`);
+}
+
+// 2. 메뉴 조회 
 export async function getMenus(): Promise<NavItem[]> {
   const menus = await getRawMenus();
   const subMenus = await getRawSubMenus();
@@ -86,8 +129,8 @@ export async function getMenus(): Promise<NavItem[]> {
   // 1단계: 메뉴 객체 생성
   menus.forEach((menu: any) => {
     const navItem: NavItem = {
-      id: menu.ID.toString(),
-      title: menu.TITLE,
+      id: menu.ID,
+      title: menu.TITLE || '',
       img: menu.IMG || '',
       description: menu.DESCRIPTION || '',
       sub_menus: []
@@ -103,7 +146,7 @@ export async function getMenus(): Promise<NavItem[]> {
     if (parentMenu) {
       parentMenu.sub_menus.push({
         id: sub.ID,
-        title: sub.TITLE,
+        title: sub.TITLE || '',
         href: sub.HREF || '',
         description: sub.DESCRIPTION || ''
       });
@@ -112,3 +155,33 @@ export async function getMenus(): Promise<NavItem[]> {
   
   return Array.from(menuMap.values());
 }
+// 3. Invoice 조회
+export async function getInvoices(): Promise<Invoice[]> {
+  const invoices = await getRawInvoices();
+  return invoices.map((inv: any) => ({
+    id: inv.ID,
+    inv_dt: inv.INV_DT,
+    seller_id: inv.SELLER_ID,
+    seller_name: inv.SELLER_NAME,
+    area_name: inv.AREA_NAME,
+    payment_status: inv.PAYMENT_STATUS, 
+    payment_method: inv.PAYMENT_METHOD,
+    payment_status_color: inv.PAYMENT_STATUS_COLOR,
+    payment_method_color: inv.PAYMENT_METHOD_COLOR,
+    qty: inv.QTY,
+    price: inv.PRICE,
+    amount: inv.AMOUNT
+  }));
+}
+// 4. Column Description 조회
+export async function getColDescs(tableName: string): Promise<ColDesc[]> {
+  const colDescs = await getRawColDescs(tableName);
+  return colDescs.map((col: any) => ({      
+    id: col.ID,
+    title: col.TITLE,     
+    type: col.TYPE,
+    width: col.WIDTH,
+    summary: col.SUMMARY,
+    aggregate: 0
+  }));
+} 

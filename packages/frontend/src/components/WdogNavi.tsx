@@ -33,7 +33,7 @@ export default function WdogNavi({ navItems }: WdogNaviProps) {
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
-                        className="flex gap-2 h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                        className="flex gap-2 h-full w-full select-none flex-col justify-start rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="#"
                         onClick={e => e.preventDefault()}
                       >
@@ -71,7 +71,7 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
             {...props}
           >
             <div className="text-lg leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug">{children}</p>
+            <p className="line-clamp-2 text-sm leading-snug text-primary">{children}</p>
           </a>
         </NavigationMenuLink>
       </li>
