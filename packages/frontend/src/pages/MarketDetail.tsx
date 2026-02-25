@@ -31,8 +31,12 @@ export default function MarketDetail() {
   };
 
   return (
-    <div >
-      <h1 className="text-xl mb-3">상권분석 - 자세히</h1>
+    <div className="flex flex-col gap-3">
+      <div className="flex gap-4">
+        <div >상권분석</div>
+        <div >{'>'}</div>
+        <div className="text-focus">상세분석</div>
+      </div>
       <div className="flex gap-4">
         <div className="w-1/2 border rounded-lg p-4 mb-4">
           <WdogTable columns={columns} invoices={invoices} caption="매출내역" onRowClick={handleRowClick} />

@@ -20,9 +20,12 @@ export default function MarketSimple() {
   } satisfies ChartConfig;
 
   return (
-    
-    <div className="flex flex-col justify-start">
-      <h1 className="text-xl mb-3">상권분석 - 간단히</h1>
+    <div className="flex flex-col gap-3">
+      <div className="flex gap-4">
+        <div >상권분석</div>
+        <div >{'>'}</div>
+        <div className="text-focus">상세분석</div>
+      </div>
       <div className="flex gap-4">
         <div>
           <WdogChartBar 

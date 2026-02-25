@@ -20,7 +20,7 @@ export default function MainLayout() {
   return (
     <div className="flex flex-col w-screen min-h-screen ">  
       {/* Header */}
-      <header className="w-full px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-20 mx-auto border-b shrink-0">  {/* ✅ flex-shrink-0 */}
+      <header className="w-full px-1 md:px-2 lg:px-4 xl:px-7 2xl:px-10 mx-auto border-b shrink-0">  {/* ✅ flex-shrink-0 */}
         <nav className="flex justify-between items-center">
           <Link to="/">
             <img src={isDarkMode ? "/logo_dark.svg" : "/logo.svg"} alt="Logo" className="h-10 w-auto hover:cursor-pointer" />
@@ -33,12 +33,12 @@ export default function MainLayout() {
       </header>
       
       {/* Main: 꽉차게 + 중앙 */}
-      <main className="w-full px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-20 mx-auto flex-1 py-8">  {/* ✅ flex-1 */}
+      <main className="w-full px-1 md:px-2 lg:px-4 xl:px-7 2xl:px-10 mx-auto flex-1 py-3">  {/* ✅ flex-1 */}
         <Outlet />
       </main>
       
       {/* Footer */}
-      <footer className="w-full px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-20 mx-auto bg-gray-800 text-white py-6 shrink-0">  {/* ✅ flex-shrink-0 */}
+      <footer className="w-full px-1 md:px-2 lg:px-4 xl:px-7 2xl:px-10 mx-auto bg-gray-800 text-white py-3 shrink-0">  {/* ✅ flex-shrink-0 */}
         <div className="text-center">
           Copyright © 2026 소상공인 356 
         </div>

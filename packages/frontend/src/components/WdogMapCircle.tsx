@@ -151,8 +151,8 @@ const WdogMapCircle: React.FC<WdogMapCircleProps> = ({
             <Button
               className={`px-2 py-1 rounded-md text-xs font-medium transition-all ${
                 showShops 
-                  ? 'bg-blue-400 text-white' 
-                  : 'bg-secondary hover:bg-blue-400 text-black'
+                  ? 'bg-focus text-focus-foreground' 
+                  : 'bg-secondary hover:bg-focus text-black'
               }`}
               onClick={() => {
                 setShowShops(!showShops);
@@ -170,7 +170,7 @@ const WdogMapCircle: React.FC<WdogMapCircleProps> = ({
               key={value}
               className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${
                 currentRadius === value
-                  ? 'bg-blue-400 text-white shadow-md'
+                  ? 'bg-focus text-focus-foreground shadow-md'
                   : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }`}
               onClick={() => handleRadiusChange(value)}
