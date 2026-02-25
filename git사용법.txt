@@ -17,6 +17,7 @@ git push -u origin main
 
 #4. branch 처리 
 git branch branch1
+git switch branch1
 git add . 
 git commit -m 'Branch Commit'
 git push -u origin branch1

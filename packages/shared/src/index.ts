@@ -47,3 +47,26 @@ export interface InvoiceSummary {
   month: string;
   sub_amounts: InvoiceSummarySub[];
 }
+export interface MapPosition {
+  lat: number;
+  lng: number;
+}
+export interface Postcode {
+  postcode: string;
+  address: string;
+  roadAddress: string;
+}
+export interface BusinessTypeResult {
+  name: string;
+  fullCategory: string;        // 전체: "음식점 > 한식 > 김밥"
+  leafCategory: string;        // 최종 말단: "김밥"
+  mainCategory: string;        // 메인: "음식점"
+  subCategory: string;         // 중분류: "한식"
+}
+export interface ShopLocation {
+  name: string;
+  fullAddress: string;
+  coords: { lat: number; lng: number };
+  category: string;
+  matchScore: number; // 일치도 점수 (0-100)
+}
