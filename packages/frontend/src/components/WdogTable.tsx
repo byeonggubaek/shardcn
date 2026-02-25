@@ -15,9 +15,14 @@ interface WdogTableProps {
   columns: ColDesc[];
   invoices: Invoice[];
   caption: string;
+  onRowClick?: (invoice: Invoice) => void; // 👈 새 props 추가!
 }
 
-const WdogTable = ({ columns, invoices, caption }: WdogTableProps) => {
+const WdogTable = ({ 
+  columns, 
+  invoices, 
+  caption, 
+  onRowClick }: WdogTableProps) => {
   if (columns.length === 0) {
     return <div>Loading...</div>;
   }
@@ -68,6 +73,7 @@ const WdogTable = ({ columns, invoices, caption }: WdogTableProps) => {
       column.aggregate = totalAmount / totalQty;
     }
   });
+
   return (
     <div>
       <Table>
@@ -98,7 +104,7 @@ const WdogTable = ({ columns, invoices, caption }: WdogTableProps) => {
         </TableHeader>
         <TableBody>
           {invoices.map((invoice) => (
-            <TableRow key={invoice.id}>
+            <TableRow key={invoice.id} onClick={() => onRowClick?.(invoice)} className="cursor-pointer hover:bg-secondary/50">
               {columns.map((column) => {
                 let classAdjust = "";
                 let fmtValue = ""

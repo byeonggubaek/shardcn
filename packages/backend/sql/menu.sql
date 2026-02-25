@@ -151,9 +151,9 @@ INSERT INTO COLUMN_DESC VALUES ('INVOICE', 1, 1, 'id', '매출번호', 'key', 80
 INSERT INTO COLUMN_DESC VALUES ('INVOICE', 2, 2, 'inv_dt', '매출일', 'dat', 100, null);
 INSERT INTO COLUMN_DESC VALUES ('INVOICE', 3, 3, 'seller_id', '매출처', 'str', 100, null);
 INSERT INTO COLUMN_DESC VALUES ('INVOICE', 4, 4, 'seller_name', '매출처명', 'str', 300, null);
-INSERT INTO COLUMN_DESC VALUES ('INVOICE', 5, 5, 'area_name', '지역', 'str', 300, null);
-INSERT INTO COLUMN_DESC VALUES ('INVOICE', 6, 6, 'payment_status', '지급상태', 'lst', 150, null);
-INSERT INTO COLUMN_DESC VALUES ('INVOICE', 7, 7, 'payment_method', '결제방법  ', 'lst', 200, null);     
+INSERT INTO COLUMN_DESC VALUES ('INVOICE', 5, 5, 'area_name', '지역', 'str', 100, null);
+INSERT INTO COLUMN_DESC VALUES ('INVOICE', 6, 6, 'payment_status', '지급상태', 'lst', 100, null);
+INSERT INTO COLUMN_DESC VALUES ('INVOICE', 7, 7, 'payment_method', '결제방법  ', 'lst', 100, null);     
 INSERT INTO COLUMN_DESC VALUES ('INVOICE', 8, 8, 'qty', '수량', 'qty', 100, 'sum');
 INSERT INTO COLUMN_DESC VALUES ('INVOICE', 9, 9, 'price', '단가', 'prc', 100, 'avg');
 INSERT INTO COLUMN_DESC VALUES ('INVOICE', 10, 10, 'amount', '금액', 'amt', 100, 'sum');  
@@ -260,11 +260,11 @@ CREATE TABLE SELLER
     CONSTRAINT SELLER_INDUSTRY_FK FOREIGN KEY (INDUSTRY_ID) REFERENCES INDUSTRY(ID)
 );
 
-INSERT INTO SELLER VALUES ('S0001', '조선의국밥', 'A0001', 'I0001'); 
+INSERT INTO SELLER VALUES ('S0001', '신포우리만두 순천신대점', 'A0001', 'I0001'); 
 INSERT INTO SELLER VALUES ('S0002', '등촌샤브칼국수 순천점', 'A0001', 'I0001');
-INSERT INTO SELLER VALUES ('S0003', 'CU 순천신대센터점', 'A0001', 'I0002 ');
+INSERT INTO SELLER VALUES ('S0003', 'CU 순천신대센터점', 'A0001', 'I0002');
 INSERT INTO SELLER VALUES ('S0004', '이마트24 R순천신대중흥점', 'A0001', 'I0002');
-INSERT INTO SELLER VALUES ('S0005', 'GS25 신대메가타운점', 'A0001', 'I0002 ');
+INSERT INTO SELLER VALUES ('S0005', 'GS25 신대메가타운점', 'A0001', 'I0002');
 INSERT INTO SELLER VALUES ('S0006', '청자다방 신대지구점', 'A0001', 'I0003');
 INSERT INTO SELLER VALUES ('S0007', '이디야커피 순천신대점', 'A0001', 'I0003');
 INSERT INTO SELLER VALUES ('S0008', '빽다방 순천신대1호점', 'A0001', 'I0003');
@@ -291,8 +291,6 @@ INSERT INTO SELLER VALUES ('S0026', 'GS25 순천교차로점', 'A0005', 'I0002')
 
 SELECT *
 FROM   SELLER;
-SELECT *
-FROM   CUSTOMER;
 REM ===============================================================================================================
 REM # 매출 데이터  
 REM ===============================================================================================================
