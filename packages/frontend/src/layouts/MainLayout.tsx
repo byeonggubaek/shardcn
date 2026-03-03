@@ -1,5 +1,6 @@
 // src/layouts/MainLayout.jsx
 import WdogNavi from '@/components/WdogNavi'
+import WdogLoginInfo from '@/components/WdogLoginInfo'
 import type { NavItem } from 'shared';
 import { Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -22,12 +23,14 @@ export default function MainLayout() {
       {/* Header */}
       <header className="w-full px-1 md:px-2 lg:px-4 xl:px-7 2xl:px-10 mx-auto border-b shrink-0">  {/* ✅ flex-shrink-0 */}
         <nav className="flex justify-between items-center">
-          <Link to="/">
-            <img src={isDarkMode ? "/logo_dark.svg" : "/logo.svg"} alt="Logo" className="h-10 w-auto hover:cursor-pointer" />
-          </Link>
-          <WdogNavi navItems={navItems} /> 
-          <div className="w-25 space-x-4 hidden md:block pl-4">
-            {isDarkMode ? "다크": "라이트"}
+          <Link to="/" className='w-1/6'>
+            <img src={isDarkMode ? "/logo_dark.svg" : "/logo.svg"} alt="Logo" className="h-7 w-auto hover:cursor-pointer" />
+          </Link> 
+          <div className='w-4/6'>
+            <WdogNavi navItems={navItems} /> 
+          </div>
+          <div className="w-1/6">
+            <WdogLoginInfo />
           </div>
         </nav>
       </header>

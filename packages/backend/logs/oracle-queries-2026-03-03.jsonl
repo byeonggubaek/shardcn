@@ -1,0 +1,515 @@
+{"timestamp":"2026-03-03T00:33:57.256Z","type":"system info","errorMessage":"undefined","log":"Oracle 풀 연결"}
+{"timestamp":"2026-03-03T00:33:57.263Z","hash":"57c98dac","stage":"query start","errorMessage":"undefined","durationMs":3,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:33:57.266Z","hash":"e81eddd4","stage":"query start","errorMessage":"undefined","durationMs":4,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:33:57.263Z","hash":"57c98dac","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":3,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:33:57.444Z","hash":"de455ebb","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:33:57.444Z","hash":"3b9ba403","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:33:57.444Z","hash":"de455ebb","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:33:57.455Z","hash":"47bb4707","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:33:57.456Z","hash":"fe88fd6e","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:33:57.455Z","hash":"47bb4707","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:33:57.460Z","hash":"bc52e71e","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:33:57.460Z","hash":"0ccbe3da","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:33:57.460Z","hash":"bc52e71e","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:01.070Z","hash":"48cf7dca","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:01.071Z","hash":"f1fdddaa","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:01.070Z","hash":"48cf7dca","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:01.075Z","hash":"955a5838","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:01.075Z","hash":"d9ddb812","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:01.075Z","hash":"955a5838","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:01.083Z","hash":"bc31baef","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:01.083Z","hash":"67b27bca","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:01.083Z","hash":"bc31baef","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:01.087Z","hash":"4768a5de","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:01.087Z","hash":"dd9ce9b8","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:01.087Z","hash":"4768a5de","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:03.015Z","hash":"07661f50","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:03.016Z","hash":"054fa89a","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:03.015Z","hash":"07661f50","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:03.020Z","hash":"60afdd45","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:03.021Z","hash":"eab47aab","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:03.020Z","hash":"60afdd45","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:03.027Z","hash":"a0a55da4","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:03.027Z","hash":"6cc2e89b","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:03.027Z","hash":"a0a55da4","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:03.031Z","hash":"a9bb0709","stage":"query start","errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:03.032Z","hash":"fa8e664d","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:03.031Z","hash":"a9bb0709","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:06.642Z","hash":"90558d71","stage":"query start","errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T00:34:06.642Z","hash":"80ecefa1","stage":"query start","errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.643Z","hash":"19b19bc4","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:06.643Z","hash":"1b5d9cea","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T00:34:06.644Z","hash":"ec02e060","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.646Z","hash":"37a88057","stage":"query start","errorMessage":"undefined","durationMs":5,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:06.642Z","hash":"90558d71","stage":"query start","resultCount":10,"errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T00:34:06.658Z","hash":"54490e19","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T00:34:06.659Z","hash":"2f3b01ac","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T00:34:06.658Z","hash":"54490e19","stage":"query start","resultCount":10,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T00:34:06.642Z","hash":"80ecefa1","stage":"query start","resultCount":11,"errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.793Z","hash":"a3c363eb","stage":"query start","errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.794Z","hash":"c498ace6","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.643Z","hash":"19b19bc4","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:06.793Z","hash":"a3c363eb","stage":"query start","errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.794Z","hash":"c498ace6","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.643Z","hash":"19b19bc4","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:06.793Z","hash":"a3c363eb","stage":"query start","resultCount":11,"errorMessage":"undefined","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T00:34:06.800Z","hash":"0ca7c378","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:06.799Z","hash":"e2e647ff","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:06.808Z","hash":"5e757dfc","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:06.809Z","hash":"b141341b","stage":"query start","errorMessage":"undefined","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:06.808Z","hash":"5e757dfc","stage":"query start","resultCount":4,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T00:34:06.812Z","hash":"a127b7eb","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:06.813Z","hash":"7e8f219b","stage":"query start","errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T00:34:06.812Z","hash":"a127b7eb","stage":"query start","resultCount":9,"errorMessage":"undefined","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}

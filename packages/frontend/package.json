@@ -19,6 +19,7 @@
  "dependencies": {
   "class-variance-authority": "^0.7.1",
   "clsx": "^2.1.1",
+  "cmdk": "^1.1.1",
   "lucide-react": "^0.563.0",
   "node-fetch": "^3.3.2",
   "passive-events-support": "^1.1.0",
@@ -30,6 +31,7 @@
   "recharts": "^2.15.4",
   "shared": "^1.0.0",
   "tailwind-merge": "^3.4.0",
+  "use-debounce": "^10.1.0",
   "xml2js": "^0.6.2"
  },
  "devDependencies": {
