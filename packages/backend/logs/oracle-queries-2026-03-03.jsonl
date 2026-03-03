@@ -1,0 +1,1306 @@
+{"timestamp":"2026-03-03T01:01:06.455Z","type":"system info","errorMessage":"undefined","log":"Oracle 풀 연결"}
+{"timestamp":"2026-03-03T01:01:06.455Z","type":"system info","errorMessage":"undefined","log":"Oracle 풀 연결"}
+{"timestamp":"2026-03-03T01:01:06.458Z","type":"system info","errorMessage":"undefined","log":"Oracle 풀 연결"}
+{"timestamp":"2026-03-03T01:01:06.455Z","type":"system info","errorMessage":"undefined","log":"Oracle 풀 연결"}
+{"timestamp":"2026-03-03T01:01:06.458Z","type":"system info","errorMessage":"undefined","log":"Oracle 풀 연결"}
+{"timestamp":"2026-03-03T01:01:06.458Z","type":"system info","errorMessage":"undefined","log":"Oracle 풀 연결"}
+{"timestamp":"2026-03-03T01:01:06.470Z","type":"query start","hash":"307ff8b5","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:01:06.471Z","type":"query start","hash":"c89566dd","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:01:06.460Z","type":"query success","hash":"433977a6","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:01:06.624Z","type":"query start","hash":"05f79f74","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:01:06.625Z","type":"query start","hash":"46965e82","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:01:06.624Z","type":"query success","hash":"05f79f74","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:01:06.461Z","type":"query success","hash":"7fe3f5ec","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:01:06.681Z","type":"query start","hash":"01d14b1c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:01:06.681Z","type":"query start","hash":"f8714f39","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:01:06.681Z","type":"query success","hash":"01d14b1c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:01:06.470Z","type":"query success","hash":"307ff8b5","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:01:06.745Z","type":"query start","hash":"e084e88b","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:01:06.745Z","type":"query start","hash":"3f610968","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:01:06.745Z","type":"query success","hash":"e084e88b","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:01:06.749Z","type":"query start","hash":"403b1846","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:01:06.749Z","type":"query start","hash":"09bb8ae0","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:01:06.749Z","type":"query success","hash":"403b1846","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:01:06.751Z","type":"query start","hash":"9ddbc839","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:01:06.751Z","type":"query start","hash":"64c3544b","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:01:06.751Z","type":"query success","hash":"9ddbc839","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:53.472Z","type":"query start","hash":"d0473e4f","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:53.473Z","type":"query start","hash":"cf497ca8","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:53.472Z","type":"query success","hash":"d0473e4f","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:53.489Z","type":"query start","hash":"489f80f9","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:53.490Z","type":"query start","hash":"65ffa0e3","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:53.489Z","type":"query success","hash":"489f80f9","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:53.498Z","type":"query start","hash":"1c1fca49","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:53.499Z","type":"query start","hash":"fac513c2","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:53.498Z","type":"query success","hash":"1c1fca49","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:53.502Z","type":"query start","hash":"772257b3","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:53.503Z","type":"query start","hash":"5f3fd99c","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:53.502Z","type":"query success","hash":"772257b3","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:55.722Z","type":"query start","hash":"393fb12e","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:57:55.723Z","type":"query start","hash":"c1c1330c","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:57:55.723Z","type":"query start","hash":"5a24bdbd","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:55.723Z","type":"query start","hash":"e4a12431","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:57:55.725Z","type":"query start","hash":"5f8e9ca4","durationMs":3,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:57:55.728Z","type":"query start","hash":"0986e57a","durationMs":7,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:55.722Z","type":"query success","hash":"393fb12e","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:57:55.734Z","type":"query start","hash":"d20f0695","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:57:55.735Z","type":"query start","hash":"bad5794b","durationMs":1,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:57:55.734Z","type":"query success","hash":"d20f0695","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:57:55.723Z","type":"query success","hash":"c1c1330c","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:57:55.865Z","type":"query start","hash":"a055de23","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:57:55.865Z","type":"query start","hash":"57fcaa4c","durationMs":2,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:57:55.865Z","type":"query success","hash":"a055de23","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:57:55.723Z","type":"query success","hash":"5a24bdbd","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:55.933Z","type":"query start","hash":"74115219","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:55.934Z","type":"query start","hash":"61e4d082","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:55.933Z","type":"query success","hash":"74115219","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:55.943Z","type":"query start","hash":"5cda455c","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:55.944Z","type":"query start","hash":"da64aa74","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:55.943Z","type":"query success","hash":"5cda455c","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:55.948Z","type":"query start","hash":"d5779a83","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:55.949Z","type":"query start","hash":"679f3006","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:55.948Z","type":"query success","hash":"d5779a83","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:57.437Z","type":"query start","hash":"a31b90ce","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:57.438Z","type":"query start","hash":"3a7efdd7","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:57.437Z","type":"query success","hash":"a31b90ce","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:57.442Z","type":"query start","hash":"0827690a","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:57.443Z","type":"query start","hash":"ae8cd396","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:57.442Z","type":"query success","hash":"0827690a","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:57.449Z","type":"query start","hash":"eb227c72","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:57.450Z","type":"query start","hash":"bf2c3538","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:57.449Z","type":"query success","hash":"eb227c72","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:57.454Z","type":"query start","hash":"b50572fc","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:57.455Z","type":"query start","hash":"c4d153a1","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:57.454Z","type":"query success","hash":"b50572fc","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:59.739Z","type":"query start","hash":"a9b2c002","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:59.740Z","type":"query start","hash":"2b603c97","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:59.739Z","type":"query success","hash":"a9b2c002","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:59.743Z","type":"query start","hash":"3c1b8710","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:59.744Z","type":"query start","hash":"98d67e92","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:59.743Z","type":"query success","hash":"3c1b8710","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:57:59.750Z","type":"query start","hash":"44a37ce3","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:59.751Z","type":"query start","hash":"c9fb9c07","durationMs":2,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:57:59.750Z","type":"query success","hash":"44a37ce3","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:57:59.754Z","type":"query start","hash":"5c8f7bc2","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:59.755Z","type":"query start","hash":"4e60f747","durationMs":2,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:57:59.754Z","type":"query success","hash":"5c8f7bc2","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query start","hash":"eabdbb0d","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query start","hash":"cce9036c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.519Z","type":"query start","hash":"a2acc0e8","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.519Z","type":"query start","hash":"4b31dca3","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.520Z","type":"query start","hash":"d806209d","durationMs":2,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.521Z","type":"query start","hash":"ac840548","durationMs":3,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query success","hash":"cce9036c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query start","hash":"eabdbb0d","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query start","hash":"cce9036c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.519Z","type":"query start","hash":"a2acc0e8","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.519Z","type":"query start","hash":"4b31dca3","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.520Z","type":"query start","hash":"d806209d","durationMs":2,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.521Z","type":"query start","hash":"ac840548","durationMs":3,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query success","hash":"cce9036c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query success","hash":"eabdbb0d","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query start","hash":"eabdbb0d","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query start","hash":"cce9036c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.519Z","type":"query start","hash":"a2acc0e8","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.519Z","type":"query start","hash":"4b31dca3","durationMs":1,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.520Z","type":"query start","hash":"d806209d","durationMs":2,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.521Z","type":"query start","hash":"ac840548","durationMs":3,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query success","hash":"cce9036c","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:58:01.518Z","type":"query success","hash":"eabdbb0d","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:58:01.519Z","type":"query success","hash":"a2acc0e8","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"54430c53","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"c3029fc8","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"0437c4ce","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.531Z","type":"query start","hash":"ee0f4271","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.532Z","type":"query start","hash":"0b2ba888","durationMs":2,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.532Z","type":"query start","hash":"cf07666e","durationMs":2,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query success","hash":"54430c53","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"54430c53","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"c3029fc8","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"0437c4ce","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.531Z","type":"query start","hash":"ee0f4271","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.532Z","type":"query start","hash":"0b2ba888","durationMs":2,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.532Z","type":"query start","hash":"cf07666e","durationMs":2,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query success","hash":"54430c53","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query success","hash":"c3029fc8","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"54430c53","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"c3029fc8","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query start","hash":"0437c4ce","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.531Z","type":"query start","hash":"ee0f4271","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.532Z","type":"query start","hash":"0b2ba888","durationMs":2,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+"}
+{"timestamp":"2026-03-03T01:58:01.532Z","type":"query start","hash":"cf07666e","durationMs":2,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+"}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query success","hash":"54430c53","durationMs":0,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query success","hash":"c3029fc8","durationMs":0,"sql":"
+SELECT  A.id,
+        A.inv_dt,
+        A.seller_id,
+        B.name seller_name,
+        D.name area_name,
+        ZA.name payment_status,
+        ZB.name payment_method,
+        ZA.ord payment_status_color,
+        ZB.ord payment_method_color,        
+        A.qty,
+        A.price,
+        A.amount
+FROM    invoice A
+JOIN    seller B ON B.id = A.seller_id
+JOIN    area_desc C ON C.id = B.area_desc_id
+JOIN    area D ON D.id = C.area_id
+LEFT JOIN minor_desc ZA on ZA.code_id = 'C0001' AND ZA.id = A.payment_status
+LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
+ORDER BY A.inv_dt DESC
+","resultCount":11}
+{"timestamp":"2026-03-03T01:58:01.530Z","type":"query success","hash":"0437c4ce","durationMs":0,"sql":"
+SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
+        title,
+        type,
+        width,
+        summary
+FROM    column_desc
+WHERE   table_name = 'INVOICE'
+ORDER BY seq
+","resultCount":10}
+{"timestamp":"2026-03-03T01:58:01.541Z","type":"query start","hash":"d0bf71cc","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.542Z","type":"query start","hash":"a3132c9a","durationMs":1,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-03T01:58:01.541Z","type":"query success","hash":"d0bf71cc","durationMs":0,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-03T01:58:01.546Z","type":"query start","hash":"ae30a2b8","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.546Z","type":"query start","hash":"b4bf0b93","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-03T01:58:01.546Z","type":"query success","hash":"ae30a2b8","durationMs":1,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}

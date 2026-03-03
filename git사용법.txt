@@ -28,7 +28,4 @@ git pull
 git merge branch1
 
 #6. 
-최신정보
-ㅇ
-ㅇ
 

@@ -2,6 +2,7 @@
 import oracledb from 'oracledb';
 import { NavItem, Invoice, ColDesc } from 'shared';
 import dotenv from 'dotenv';
+import Logger from './logger'
 
 // 환경 변수 로드
 dotenv.config();
@@ -22,9 +23,9 @@ export async function initPool(): Promise<void> {
   
   try {
     pool = await oracledb.createPool(DB_CONFIG);
-    console.log('✅ Oracle 풀 연결 성공');
+    await Logger.log('i', 'Oracle 풀 연결');
   } catch (error) {
-    console.error('❌ 풀 생성 실패:', error);
+    await Logger.logError('풀 생성 실패', error);
     throw error;
   }
 }
@@ -33,13 +34,30 @@ export async function initPool(): Promise<void> {
  * 쿼리 실행 (SELECT) - 수정됨!
  */
 async function select(sql: string, binds: any[] = []): Promise<any[]> {
+  const startTime = Date.now();
+  (globalThis as any).queryStartTime = startTime;
+  const logEntry = await Logger.logQueryStart(sql, binds);
+  // 1. 실행 전 로그
+  await Logger.logQueryStart(sql, binds).then(logEntry => logEntry = logEntry).catch(error => {
+    // 로그 기록 실패 시에도 쿼리는 실행되어야 하므로, 에러는 콘솔에 출력만 하고 진행
+    console.error('쿼리 시작 로그 기록 실패:', error);
+  });
+
   await initPool();
   const connection = await pool!.getConnection();
   try {
     const result = await connection.execute(sql, binds, {
       outFormat: oracledb.OUT_FORMAT_OBJECT,
     });
+
+    // 2. 성공 로그
+    await Logger.logQuerySuccess(logEntry, result.rows.length)    
+    
     return result.rows as any[];
+  } catch (error) {
+    // 3. 에러 로그
+    await Logger.logQueryError(logEntry, error)
+    throw error
   } finally {
     await connection.close();
   }
@@ -73,12 +91,14 @@ FROM    nav_item
 `);
 }
 
-async function getRawSubMenus(): Promise<any[]> {
+async function getRawSubMenus(title: string = ''): Promise<any[]> {
   return select(`
 SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
         title, href, description 
 FROM    nav_sub_item
-`);
+WHERE   title LIKE '%' || :title || '%'
+ORDER BY nav_item_id, id
+`, [title]);
 }
 // 칼럼정의 조회 - 1. 테이블명으로 칼럼정의 조회 (칼럼명은 소문자로 반환)
 async function getRawColDescs(tableName: string): Promise<any[]> {
@@ -119,9 +139,9 @@ ORDER BY A.inv_dt DESC
 }
 
 // 2. 메뉴 조회 
-export async function getMenus(): Promise<NavItem[]> {
+export const getMenus = async (title: string = ''): Promise<NavItem[]> => {
   const menus = await getRawMenus();
-  const subMenus = await getRawSubMenus();
+  const subMenus = await getRawSubMenus(title);
   
   // 메뉴 맵 생성
   const menuMap = new Map<string, NavItem>();
@@ -156,7 +176,7 @@ export async function getMenus(): Promise<NavItem[]> {
   return Array.from(menuMap.values());
 }
 // 3. Invoice 조회
-export async function getInvoices(): Promise<Invoice[]> {
+export const getInvoices = async (): Promise<Invoice[]> => {
   const invoices = await getRawInvoices();
   return invoices.map((inv: any) => ({
     id: inv.ID,
@@ -174,7 +194,7 @@ export async function getInvoices(): Promise<Invoice[]> {
   }));
 }
 // 4. Column Description 조회
-export async function getColDescs(tableName: string): Promise<ColDesc[]> {
+export const getColDescs = async (tableName: string): Promise<ColDesc[]> => {
   const colDescs = await getRawColDescs(tableName);
   return colDescs.map((col: any) => ({      
     id: col.ID,
