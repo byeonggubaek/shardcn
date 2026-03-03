@@ -5,7 +5,7 @@ import * as crypto from 'crypto'
 
 interface LogEntry {
   timestamp: string
-  type: 'system info' | 'system warning' | 'system error'
+  type: string
   errorCode?: number | string
   errorMessage?: string  
   log: string
@@ -13,22 +13,22 @@ interface LogEntry {
 
 interface ApiLogEntry {
   timestamp: string
+  type: string
   hash: string
-  stage: 'api start' | 'api success' | 'api error'
+  durationMs?: number
   errorCode?: number | string
   errorMessage?: string
-  durationMs?: number
   method: string
 }
 
 interface QueryLogEntry {
   timestamp: string
+  type: string
   hash: string
-  stage: 'query start' | 'query success' | 'query error'
+  durationMs?: number
   resultCount?: number
   errorCode?: number | string
   errorMessage?: string
-  durationMs?: number
   sql: string
 }
 
@@ -80,7 +80,7 @@ class Logger {
       log: log
     }
   }
-  static async log(type: 'i' | 'w' | 'e', log: string) {
+  static async log(type: 'i' | 'w', log: string) {
     await this.initLogDir()
     const logEntry = this.createLogEntry(type, log)
     this.logBuffer.push(JSON.stringify(logEntry))
@@ -93,16 +93,14 @@ class Logger {
     await this.flushBuffer()
   }
   private static createApiLogEntry(
-    stage: 'start' | 'success' | 'error',
-    hash: string,
     method: string,
     binds: any[],
     error?: any
   ): ApiLogEntry {
     return {
       timestamp: new Date().toISOString(),
-      hash: hash,
-      stage: stage === 'start' ? 'api start' : stage === 'success' ? 'api success' : 'api error',
+      hash: Logger.getHash(),
+      type: 'api start',
       errorCode: error?.errorNum || error?.code,
       errorMessage: error instanceof Error ? error.message : String(error),
       durationMs: error ? undefined : Date.now() - (globalThis as any).queryStartTime!,
@@ -136,34 +134,28 @@ class Logger {
   }
 
   private static createQueryLogEntry(
-    stage: 'start' | 'success' | 'error',
     sql: string,
-    binds: any[],
-    hash?: string,
-    resultCount?: number,
-    error?: any
+    binds: any[]
   ): QueryLogEntry {
     return {
       timestamp: new Date().toISOString(),
+      type: 'query start',
       hash: Logger.getHash(),
-      stage: stage === 'start' ? 'query start' : stage === 'success' ? 'query success' : 'query error',
-      resultCount,
-      errorCode: error?.errorNum || error?.code,
-      errorMessage: error instanceof Error ? error.message : String(error),
-      durationMs: error ? undefined : Date.now() - (globalThis as any).queryStartTime!,
+      durationMs: Date.now() - (globalThis as any).queryStartTime!,
       sql: this.applyBindsToSql(sql, binds)
     }
   }
 
   static async logQueryStart(sql: string, binds: any[]): Promise<QueryLogEntry> {
     await this.initLogDir()
-    const logEntry = this.createQueryLogEntry('start', sql, binds)
+    const logEntry = this.createQueryLogEntry(sql, binds)
     const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
     this.logBuffer.push(logEntryString)
     return logEntry;
   }
 
   static async logQuerySuccess(logEntry: QueryLogEntry, resultCount: number) {
+    logEntry.type = 'query success';
     logEntry.resultCount = resultCount;
     const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
     this.logBuffer.push(logEntryString)
@@ -173,6 +165,7 @@ class Logger {
   }
 
   static async logQueryError(logEntry: QueryLogEntry, error: any): Promise<QueryLogEntry> {
+    logEntry.type = 'query error';
     logEntry.errorCode = error?.errorNum || error?.code;
     logEntry.errorMessage = error instanceof Error ? error.message : String(error);
     const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
