@@ -16,6 +16,7 @@ export default function WdogAutoInput({
   placeholder = "메뉴 검색...",
   onValueChange
 }: WdogAutoInputProps) {
+  const inputRef = useRef<HTMLInputElement>(null)
   const [open, setOpen] = useState(false)
   const [searchValue, setSearchValue] = useState("")  // 당신의 기존 변수명
   const [navItems, setNavItems] = useState<NavSubItem[]>([])
@@ -62,6 +63,7 @@ export default function WdogAutoInput({
     setSearchValue("")
     setNavItems([])
     onValueChange?.("", undefined)
+    inputRef.current?.focus()
   }
 
   return (
@@ -69,6 +71,7 @@ export default function WdogAutoInput({
       <PopoverTrigger asChild>
         <div className="relative w-full max-w-md">
           <Input
+            ref={inputRef}
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder={placeholder}
