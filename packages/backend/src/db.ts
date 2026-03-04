@@ -1,6 +1,6 @@
 // oracle-pool.ts (에러 수정 완료)
 import oracledb from 'oracledb';
-import { NavItem, Invoice, ColDesc } from 'shared';
+import { NavItem, NavSubItem, Invoice, ColDesc } from 'shared';
 import dotenv from 'dotenv';
 import Logger from './logger.js'
 
@@ -110,12 +110,25 @@ FROM    nav_item
 }
 async function getRawSubMenus(title: string = ''): Promise<any[]> {
   return select(`
-SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+SELECT  nav_item_id || '-' || id AS id, 
         title, href, description 
 FROM    nav_sub_item
 WHERE   title LIKE '%' || :title || '%'
 ORDER BY nav_item_id, id
 `, [title]);
+}
+async function searchRawSubMenus(key: string = ''): Promise<any[]> {
+  if (!key?.trim() || key.trim().length < 2) {
+    return [];  
+  }
+  const cleanKey = key.trim();
+  return select(`
+SELECT  nav_item_id || '-' || id AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || UPPER(:1) || '%' OR description LIKE '%' || UPPER(:2) || '%'
+ORDER BY nav_item_id, id
+`, [cleanKey, cleanKey]);
 }
 // 2. 칼럼정의 조회 - 테이블명으로 칼럼정의 조회 (칼럼명은 소문자로 반환)
 async function getRawColDescs(tableName: string): Promise<any[]> {
@@ -224,3 +237,13 @@ export const getColDescs = async (tableName: string): Promise<ColDesc[]> => {
     aggregate: 0
   }));
 } 
+// 5. SubMenu 조회
+export const searchSubMenus = async (key: string = ''): Promise<NavSubItem[]> => {
+  const subMenus = await searchRawSubMenus(key);
+  return subMenus.map((sub: any) => ({
+    id: sub.ID,
+    title: sub.TITLE,
+    href: sub.HREF,
+    description: sub.DESCRIPTION
+  }));
+}
