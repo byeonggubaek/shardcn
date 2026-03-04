@@ -2,7 +2,7 @@
 import oracledb from 'oracledb';
 import { NavItem, Invoice, ColDesc } from 'shared';
 import dotenv from 'dotenv';
-import Logger from './logger'
+import Logger from './logger.js'
 
 // 환경 변수 로드
 dotenv.config();
@@ -20,12 +20,26 @@ let pool: any = null;
 
 export async function initPool(): Promise<void> {
   if (pool) return;
-  
   try {
     pool = await oracledb.createPool(DB_CONFIG);
-    await Logger.log('i', 'Oracle 풀 연결');
+    console.log('DB풀을 생성하였습니다.');
+    await Logger.log('i', 'DB풀 생성 성공');
   } catch (error) {
-    await Logger.logError('풀 생성 실패', error);
+    console.log('DB풀을 생성하지 못했습니다.', (error as Error).message || error);
+    await Logger.logError('DB풀 생성 실패', (error as Error).message || error);
+    throw error;
+  }
+}
+
+export async function closePool(): Promise<void> {
+  if (!pool) return;
+  try {
+    await pool.close(5000); // 5초 내 정리
+    console.log('DB풀을 종료하였습니다.');
+    await Logger.log('i', 'DB풀 종료 성공');
+  } catch (error) {
+    console.log('DB풀을 종료하지 못했습니다.', (error as Error).message || error);
+    await Logger.logError('DB풀 종료 실패', (error as Error).message || error);
     throw error;
   }
 }
@@ -34,32 +48,26 @@ export async function initPool(): Promise<void> {
  * 쿼리 실행 (SELECT) - 수정됨!
  */
 async function select(sql: string, binds: any[] = []): Promise<any[]> {
-  const startTime = Date.now();
-  (globalThis as any).queryStartTime = startTime;
-  const logEntry = await Logger.logQueryStart(sql, binds);
-  // 1. 실행 전 로그
-  await Logger.logQueryStart(sql, binds).then(logEntry => logEntry = logEntry).catch(error => {
-    // 로그 기록 실패 시에도 쿼리는 실행되어야 하므로, 에러는 콘솔에 출력만 하고 진행
-    console.error('쿼리 시작 로그 기록 실패:', error);
-  });
-
-  await initPool();
-  const connection = await pool!.getConnection();
+  let logEntry = null;
+  let connection = null;
   try {
+    // 1. 쿼리 시작 로그
+    await initPool();
+    connection = await pool!.getConnection();    
+    logEntry = await Logger.logQueryStart(sql, binds);
     const result = await connection.execute(sql, binds, {
       outFormat: oracledb.OUT_FORMAT_OBJECT,
     });
-
     // 2. 성공 로그
     await Logger.logQuerySuccess(logEntry, result.rows.length)    
-    
     return result.rows as any[];
   } catch (error) {
     // 3. 에러 로그
     await Logger.logQueryError(logEntry, error)
     throw error
   } finally {
-    await connection.close();
+    if (connection) 
+      await connection.close();
   }
 }
 
@@ -67,22 +75,32 @@ async function select(sql: string, binds: any[] = []): Promise<any[]> {
  * INSERT/UPDATE/DELETE (DML)
  */
 async function execute(sql: string, binds: any[] = []): Promise<any> {
-  await initPool();
-  const connection = await pool!.getConnection();
-  
+  let logEntry = null;
+  let connection = null;  
   try {
+    await initPool();
+    connection = await pool!.getConnection();
+    logEntry = await Logger.logQueryStart(sql, binds);
     const result = await connection.execute(sql, binds, {
       autoCommit: true,
       outFormat: oracledb.OUT_FORMAT_OBJECT
     });
+    await Logger.logQuerySuccess(logEntry, result.rowsAffected || 0);
     return result;
-  } finally {
-    await connection.close();
+  } catch (error) {
+    // 3. 에러 로그
+    await Logger.logQueryError(logEntry, error)
+    throw error
+  } finally {    
+    if (connection) 
+      await connection.close();
   }
 }
 
-// 조회
-// 메뉴 조회 - 1. 메뉴와 서브메뉴를 각각 조회한 후, 자바스크립트에서 조합하여 반환
+// =================================================================================================================
+// DB에서 데이터를 조회하여 반환하는 함수들 (원시 데이터 조회)
+// =================================================================================================================
+// 1. 메뉴 조회 - 메뉴와 서브메뉴를 각각 조회한 후, 자바스크립트에서 조합하여 반환
 async function getRawMenus(): Promise<any[]> {
   return select(`
 SELECT  id, 
@@ -90,7 +108,6 @@ SELECT  id,
 FROM    nav_item
 `);
 }
-
 async function getRawSubMenus(title: string = ''): Promise<any[]> {
   return select(`
 SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
@@ -100,7 +117,7 @@ WHERE   title LIKE '%' || :title || '%'
 ORDER BY nav_item_id, id
 `, [title]);
 }
-// 칼럼정의 조회 - 1. 테이블명으로 칼럼정의 조회 (칼럼명은 소문자로 반환)
+// 2. 칼럼정의 조회 - 테이블명으로 칼럼정의 조회 (칼럼명은 소문자로 반환)
 async function getRawColDescs(tableName: string): Promise<any[]> {
   return select(`
 SELECT  Lower(id) AS id,  -- 중요함: 칼럼명을 소문자로 변환하여 반환
@@ -113,7 +130,7 @@ WHERE   table_name = :tableName
 ORDER BY seq
 `, [tableName]);
 }
-
+// 3 인보이스 조회 - 인보이스와 관련된 여러 테이블을 JOIN하여 조회
 async function getRawInvoices(): Promise<any[]> {
   return select(`
 SELECT  A.id,
@@ -137,7 +154,9 @@ LEFT JOIN minor_desc ZB on ZB.code_id = 'C0002' AND ZB.id = A.payment_method
 ORDER BY A.inv_dt DESC
 `);
 }
-
+// =================================================================================================================
+// DB에서 읽어들인 데이터를 객체 데이터로 변환하여 반환하는 함수들
+// =================================================================================================================
 // 2. 메뉴 조회 
 export const getMenus = async (title: string = ''): Promise<NavItem[]> => {
   const menus = await getRawMenus();

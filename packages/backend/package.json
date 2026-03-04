@@ -10,7 +10,7 @@
  "description": "백앤드로 작동하고 node.js 플로젝트이다.",
  "private": true,
  "type": "module",
- "main": "./dist/index.js",
+ "main": "dist/index.js",
  "scripts": {
   "dev": "tsx watch src/index.ts",
   "build": "tsc",

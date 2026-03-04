@@ -1,0 +1,53 @@
+{"timestamp":"2026-03-04T01:09:28.500Z","type":"api start","hash":"1f1eb860","method":"GET /api/get_menus","binds":[],"duration":0,"startTime":1772586568500}
+{"timestamp":"2026-03-04T01:09:28.703Z","type":"system info","log":"DB풀 생성 성공"}
+{"timestamp":"2026-03-04T01:09:28.845Z","type":"query start","hash":"17df542c","duration":0,"startTime":1772586568845,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-04T01:09:28.845Z","type":"query success","hash":"17df542c","duration":17,"startTime":1772586568845,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-04T01:09:28.865Z","type":"query start","hash":"2e93537a","duration":0,"startTime":1772586568866,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-04T01:09:28.865Z","type":"query success","hash":"2e93537a","duration":7,"startTime":1772586568866,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-04T01:09:28.500Z","type":"api success","hash":"1f1eb860","method":"GET /api/get_menus","binds":[],"duration":388,"startTime":1772586568500}
+{"timestamp":"2026-03-04T01:09:28.896Z","type":"query start","hash":"4304ef70","duration":0,"startTime":1772586568896,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+"}
+{"timestamp":"2026-03-04T01:09:28.896Z","type":"query success","hash":"4304ef70","duration":2,"startTime":1772586568896,"sql":"
+SELECT  id, 
+        title, img, description 
+FROM    nav_item
+","resultCount":4}
+{"timestamp":"2026-03-04T01:09:28.901Z","type":"query start","hash":"445977b0","duration":0,"startTime":1772586568901,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+"}
+{"timestamp":"2026-03-04T01:09:28.901Z","type":"query success","hash":"445977b0","duration":3,"startTime":1772586568901,"sql":"
+SELECT  TO_CHAR(nav_item_id) || '-' || TO_CHAR(id) AS id, 
+        title, href, description 
+FROM    nav_sub_item
+WHERE   title LIKE '%' || '' || '%'
+ORDER BY nav_item_id, id
+","resultCount":9}
+{"timestamp":"2026-03-04T01:09:28.894Z","type":"api success","hash":"d746ac9d","method":"GET /api/get_menus","binds":[],"duration":14,"startTime":1772586568894}
+{"timestamp":"2026-03-04T01:09:52.940Z","type":"system info","log":"Backend 시작: http://localhost:3001"}

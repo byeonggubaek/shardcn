@@ -15,9 +15,11 @@ interface ApiLogEntry {
   timestamp: string
   type: string
   hash: string
-  durationMs?: number
+  startTime?: number
+  duration?: number
   errorCode?: number | string
   errorMessage?: string
+  binds: any[],
   method: string
 }
 
@@ -25,13 +27,13 @@ interface QueryLogEntry {
   timestamp: string
   type: string
   hash: string
-  durationMs?: number
+  startTime?: number
+  duration?: number
   resultCount?: number
   errorCode?: number | string
   errorMessage?: string
   sql: string
 }
-
 
 class Logger {
   private static logDir = './logs'
@@ -69,14 +71,11 @@ class Logger {
   // 시스템 관련 로그 기록 메서드
   private static createLogEntry(
     type: 'i' | 'w' | 'e',
-    log: string,
-    error?: any
+    log: string
   ): LogEntry {
     return {
       timestamp: new Date().toISOString(),
-      type: type === 'i' ? 'system info' : type === 'w' ? 'system warning' : 'system error',
-      errorCode: error?.errorNum || error?.code,
-      errorMessage: error instanceof Error ? error.message : String(error),
+      type: type === 'i' ? 'system info' : type === 'w' ? 'system warn' : 'system error',
       log: log
     }
   }
@@ -87,49 +86,56 @@ class Logger {
     await this.flushBuffer()
   }
   static async logError(log: string, error: any) {
-    const logEntry = this.createLogEntry('e', log, error)
+    const logEntry = this.createLogEntry('e', log)
+    logEntry.errorCode = error?.errorNum || error?.code;
+    logEntry.errorMessage = error instanceof Error ? error.message : String(error);    
     this.logBuffer.push(JSON.stringify(logEntry))
-    
     await this.flushBuffer()
   }
   private static createApiLogEntry(
     method: string,
-    binds: any[],
-    error?: any
+    binds: any[]
   ): ApiLogEntry {
     return {
       timestamp: new Date().toISOString(),
-      hash: Logger.getHash(),
       type: 'api start',
-      errorCode: error?.errorNum || error?.code,
-      errorMessage: error instanceof Error ? error.message : String(error),
-      durationMs: error ? undefined : Date.now() - (globalThis as any).queryStartTime!,
-      method: method
+      hash: Logger.getHash(),
+      method: method,
+      binds: binds,
+      duration: 0,      
+      startTime: Date.now()
     }
   }
 
-  static async logApiStart(hash: string, sql: string, binds: any[]) {
+  static async logApiStart(method: string, binds: any[]): Promise<ApiLogEntry> {
     await this.initLogDir()
-    const logEntry = this.createQueryLogEntry('start', hash, sql, binds)
-    const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
-    this.logBuffer.push(logEntryString)
+    const logEntry = this.createApiLogEntry(method, binds)
+    this.logBuffer.push(JSON.stringify(logEntry))
+    return logEntry;
   }
 
-  static async logApiSuccess(hash: string, sql: string, binds: any[], resultCount: number) {
-    const logEntry = this.createQueryLogEntry('success', hash, sql, binds, resultCount)
-    const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
-    this.logBuffer.push(logEntryString)
-    const duration = Date.now() - (globalThis as any).queryStartTime!
-    
+  static async logApiSuccess(logEntry: ApiLogEntry | null) {
+    if (!logEntry) {
+      console.log('API 로그 엔트리가 없습니다.');
+      return;
+    }
+    logEntry.type = 'api success';
+    logEntry.duration = Date.now() - logEntry.startTime!;
+    this.logBuffer.push(JSON.stringify(logEntry))
     await this.flushBuffer()
   }
 
-  static async logApiError(hash: string, sql: string, binds: any[], error: any) {
-    const logEntry = this.createQueryLogEntry('error', hash, sql, binds, undefined, error)
-    const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
-    this.logBuffer.push(logEntryString)
-    const duration = Date.now() - (globalThis as any).queryStartTime!
-    
+  static async logApiError(logEntry: ApiLogEntry | null,  error: any) {
+    if (!logEntry)
+    {
+      console.log('API 로그 엔트리가 없습니다.');
+      return;
+    }
+    logEntry.type = 'api error';
+    logEntry.errorCode = error?.errorNum || error?.code;
+    logEntry.errorMessage = error instanceof Error ? error.message : String(error);    
+    logEntry.duration = Date.now() - logEntry.startTime!    
+    this.logBuffer.push(JSON.stringify(logEntry))
     await this.flushBuffer()
   }
 
@@ -141,7 +147,8 @@ class Logger {
       timestamp: new Date().toISOString(),
       type: 'query start',
       hash: Logger.getHash(),
-      durationMs: Date.now() - (globalThis as any).queryStartTime!,
+      duration: 0,
+      startTime : Date.now(),
       sql: this.applyBindsToSql(sql, binds)
     }
   }
@@ -154,26 +161,31 @@ class Logger {
     return logEntry;
   }
 
-  static async logQuerySuccess(logEntry: QueryLogEntry, resultCount: number) {
+  static async logQuerySuccess(logEntry: QueryLogEntry | null, resultCount: number) {
+    if (!logEntry) {
+      console.log('쿼리 로그 엔트리가 없습니다.');
+      return;
+    }
     logEntry.type = 'query success';
     logEntry.resultCount = resultCount;
+    logEntry.duration = Date.now() - logEntry.startTime!;
     const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
     this.logBuffer.push(logEntryString)
-    const duration = Date.now() - (globalThis as any).queryStartTime!
-    
     await this.flushBuffer()
   }
 
-  static async logQueryError(logEntry: QueryLogEntry, error: any): Promise<QueryLogEntry> {
+  static async logQueryError(logEntry: QueryLogEntry | null, error: any) {
+    if (!logEntry) {
+      console.log('쿼리 로그 엔트리가 없습니다.');
+      return;
+    }
     logEntry.type = 'query error';
     logEntry.errorCode = error?.errorNum || error?.code;
     logEntry.errorMessage = error instanceof Error ? error.message : String(error);
-    const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))
+    logEntry.duration = Date.now() - logEntry.startTime!;
+    const logEntryString = JSON.stringify(logEntry).replace(/\\n/g, String.fromCharCode(13) + String.fromCharCode(10))  
     this.logBuffer.push(logEntryString)
-    const duration = Date.now() - (globalThis as any).queryStartTime!
-    
     await this.flushBuffer()
-    return logEntry;  
   }
 
   private static async flushBuffer() {
@@ -183,6 +195,11 @@ class Logger {
     await fs.appendFile(logFile, this.logBuffer.join('\n') + '\n')
     this.logBuffer = []
   }
+
+  static async forceFlushAll(): Promise<void> {
+    // 모든 대기중인 로그 강제 쓰기
+    await this.flushBuffer();
+  }  
 }
 
 export default Logger

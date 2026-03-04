@@ -34,6 +34,10 @@ function App() {
         <Route index element={<TrendSns />} />           {/* / */}
         <Route path="*" element={<div>404 Not Found</div>} />
       </Route>      
+      <Route path="/trends/sns" element={<MainLayout />}>
+        <Route index element={<TrendSns />} />           {/* / */}
+        <Route path="*" element={<div>404 Not Found</div>} />
+      </Route>      
       <Route path="/dashboard/summary" element={<MainLayout />}>
         <Route index element={<DashSummary />} />           {/* / */}
         <Route path="*" element={<div>404 Not Found</div>} />
