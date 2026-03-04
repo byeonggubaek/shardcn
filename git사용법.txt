@@ -16,16 +16,20 @@ git remote add origin https://github.com/byeonggubaek/shardcn.git
 git push -u origin main
 
 #4. branch 처리 
-git branch branch1
-git switch branch1
+git branch <브랜치명>
+git switch <브랜치명>
 git add . 
 git commit -m 'Branch Commit'
-git push -u origin branch1
+git push -u origin <브랜치명>
 
-#5. git merge 
+#5. branch 삭제 
+git branch -d <브랜치명> 
+git push origin --delete <브랜치명>
+
+#6. git merge 
 git switch main 
 git pull 
-git merge branch1
+git merge <브랜치명>
 
-#6. 
+
 
