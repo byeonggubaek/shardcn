@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { closePool, getMenus, getInvoices, getColDescs } from './db.js';
+import { closePool, getMenus, getInvoices, getColDescs, searchSubMenus } from './db.js';
 import dotenv from 'dotenv';
 import Logger from './logger.js'
 
@@ -145,20 +145,20 @@ app.get('/api/get_invoices', async (req, res) => {
   }
 });
 // API: 메뉴 검색
-// GET /api/search_menus?title=검색어
-// PARAMETER : title (필수) - 검색할 메뉴 제목
+// GET /api/search_menus?key=검색어
+// PARAMETER : key (필수) - 검색할 메뉴 제목 또는 설명
 app.get('/api/search_menus', async (req, res) => {
   let apiLogEntry = null;  
   try {
-    const { title } = req.query as { title: string };  // 👈 req.query 사용!
-    if (!title) {
+    const { key } = req.query as { key: string };  
+    if (!key) {
       return res.status(400).json({
         success: false,
         error: '검색어가 필요합니다.'
       });
     }
-    apiLogEntry = await Logger.logApiStart('GET /api/search_menus', [title]);
-    const menus = await getMenus(title);
+    apiLogEntry = await Logger.logApiStart('GET /api/search_menus', [key]);
+    const menus = await searchSubMenus(key);
     res.json({
       success: true,
       data: menus,
