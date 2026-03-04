@@ -32,5 +32,7 @@ git switch main
 git pull 
 git merge <브랜치명>
 
+#7.
+
 
 
